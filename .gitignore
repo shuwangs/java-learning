@@ -1,0 +1,22 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Compiled Java classes
+*.class
+
+# IntelliJ build output
+out/
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
