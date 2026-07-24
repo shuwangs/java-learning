@@ -13,7 +13,7 @@ public class JDBCDemo {
 
         // register the driver
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Class.forName("com.mysql.cj.jdbc.Driver");
 
         // connect
         String url="jdbc:mysql://127.0.0.1:3306/jdbc_learning";
@@ -23,20 +23,30 @@ public class JDBCDemo {
 
         // define SQL queries
 
-        String sql ="SELECT * FROM student";
+        String sql1 ="update student set age = 22 where id = 1";
+        String sql2 ="update student set age = 23 where id = 2";
+
         // get the target object
         Statement state = conn.createStatement();
 
         // exect sql
-        ResultSet resultSet = state.executeQuery(sql);
+//        ResultSet resultSet = state.executeQuery(sql);
 
-        // deal with the result
-        while (resultSet.next()) {
-            int id = resultSet.getInt("id");
-            String name = resultSet.getString("name");
-            int age = resultSet.getInt("age");
 
-            System.out.println(id + " | " + name + " | " + age);
+        try {
+            conn.setAutoCommit(false);
+            int count1 = state.executeUpdate(sql1);
+            System.out.println(count1);
+
+            int count2 = state.executeUpdate(sql2);
+            System.out.println(count2);
+
+            conn.commit();
+        }catch (Exception throwables){
+            // rollback
+            conn.rollback();
+
+            throwables.printStackTrace();
         }
         // release statement ->
         state.close();
