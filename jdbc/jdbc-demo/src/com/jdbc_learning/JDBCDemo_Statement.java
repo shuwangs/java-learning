@@ -27,8 +27,11 @@ public class JDBCDemo_Statement {
 
         try {
             int count = state.executeUpdate(sql);
-            System.out.println(count);
-
+            if (count > 0){
+                System.out.println("successfully updated");
+            } else {
+                System.out.println("update failed");
+            }
         }catch (Exception throwables){
             throwables.printStackTrace();
         }
