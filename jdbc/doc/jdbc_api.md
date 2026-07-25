@@ -35,3 +35,21 @@
       - params: int (column number, start from 1)
         - String: the column name
     
+
+## PreparedStatement
+An object that represents a precompiled SQL statement. 
+A SQL is precompiled and stored in a PreparedStatement
+- PreparedStatement function:
+  -   
+- SQL injection
+
+### Steps
+1. Define sql
+> example: String sql =  "select * from user where useername =? and password = ?"
+2. get preparedStatement obj
+> PreparedStatement pst = conn.preparedStatement(sql);
+
+3. Set params
+> assign ? values
+
+4. execute sql
