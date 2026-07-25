@@ -23,3 +23,15 @@
     for DDL: may return 0;
 - ResultSet --- executeQuery: DQL
 > Return value: ResultSet is the set of the results
+
+
+### ResultSet 
+- functions: 
+  1. boolen next(): if the current line is valid
+     - true:
+     - false
+  2. XXX getXXX(params): 
+    - e.g., int getInt(params), String getString(params)
+      - params: int (column number, start from 1)
+        - String: the column name
+    
