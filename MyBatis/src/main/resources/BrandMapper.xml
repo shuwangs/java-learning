@@ -68,4 +68,15 @@
     <select id="selectById" resultMap="brandResMap">
         select * from tb_brand where id = #{id};
     </select>
+
+    <!-- Conditional Query-->
+    <select id="selectByCondition" resultMap="brandResMap">
+        select *
+        from tb_brand
+        where
+            status = #{status}
+        and company_name like #{companyName}
+        and brand_name like #{brandName}
+    </select>
+
 </mapper>
