@@ -122,3 +122,22 @@ executing a later phase automatically executes all preceding phases.
     >Example:
     <version>1.0-SNAPSHOT</version>
 
+### Explanation of Each Scope
+- compile (Default)
+Available during compilation, testing, and runtime.
+This is the default scope if none is specified.
+- test
+Only available when compiling and running tests.
+Not included in the final packaged application.
+- provided
+Required for compilation and testing.
+Expected to be provided by the runtime environment (such as Tomcat).
+- runtime
+Not needed during compilation.
+Available only during testing and runtime.
+- system
+Similar to provided, but the dependency is loaded from a specific local path.
+Rarely used in modern Maven projects.
+- import
+Used only with dependencyManagement.
+Imports dependency version information from another POM
