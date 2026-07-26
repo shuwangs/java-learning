@@ -95,3 +95,30 @@ pre-site → site → post-site
 
 Within the same lifecycle,
 executing a later phase automatically executes all preceding phases.
+
+## Maven Coordinates
+### What are Maven Coordinates?
+- Maven coordinates uniquely identify a Maven artifact.
+- They are used to identify a project or a dependency in a Maven repository.
+
+### Main Components of Maven Coordinates
+- groupId
+    - Identifies the organization, company, or project that produces the artifact.
+    - Typically follows the reverse domain name convention.
+        >Example:
+        <groupId>com.itheima</groupId>
+
+- artifactId
+    - Identifies the name of the project or module.
+    - Usually corresponds to the project or module name.
+
+    >Examples:
+    order-service
+    goods-service
+    mysql-connector-j
+  
+- version
+    - Specifies the version of the artifact.
+    >Example:
+    <version>1.0-SNAPSHOT</version>
+
