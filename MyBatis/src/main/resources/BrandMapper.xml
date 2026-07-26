@@ -4,67 +4,67 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.mapper.BrandMapper">
 
-<!--    Sql fragment-->
-<!--    <sql id="brand_column">-->
-<!--        id,-->
-<!--        brand_name as brandName,-->
-<!--        company_name as companyName,-->
-<!--        ordered,-->
-<!--        description,-->
-<!--        status-->
-<!--    </sql>-->
-<!--    alias-->
-<!--    <select id="selectAll" resultType="Brand">-->
-<!--        select-->
-<!--        id,-->
-<!--        brand_name as brandName,-->
-<!--        company_name as companyName,-->
-<!--        ordered,-->
-<!--        description,-->
-<!--        status-->
-<!--        from tb_brand;-->
-<!--    </select>-->
+    <!--    Sql fragment-->
+    <!--    <sql id="brand_column">-->
+    <!--        id,-->
+    <!--        brand_name as brandName,-->
+    <!--        company_name as companyName,-->
+    <!--        ordered,-->
+    <!--        description,-->
+    <!--        status-->
+    <!--    </sql>-->
+    <!--    alias-->
+    <!--    <select id="selectAll" resultType="Brand">-->
+    <!--        select-->
+    <!--        id,-->
+    <!--        brand_name as brandName,-->
+    <!--        company_name as companyName,-->
+    <!--        ordered,-->
+    <!--        description,-->
+    <!--        status-->
+    <!--        from tb_brand;-->
+    <!--    </select>-->
 
-<!--    <select id="selectAll" resultType="brand">-->
-<!--        select <include refid="brand_column"/>-->
-<!--        from tb_brand;-->
-<!--    </select>-->
+    <!--    <select id="selectAll" resultType="brand">-->
+    <!--        select <include refid="brand_column"/>-->
+    <!--        from tb_brand;-->
+    <!--    </select>-->
 
-<!--    3. result map-->
-<!--
-    id: the alias
-    type: mapper type
-    -->
+    <!--    3. result map-->
+    <!--
+        id: the alias
+        type: mapper type
+        -->
     <resultMap id="brandResMap" type="brand">
         <!--
             column: the table column name
             property: the map alias name
         -->
-        <result column="brand_name" property="brandName" />
-        <result column="company_name" property="companyName" />
+        <result column="brand_name" property="brandName"/>
+        <result column="company_name" property="companyName"/>
     </resultMap>
 
     <select id="selectAll" resultMap="brandResMap">
         select * from tb_brand;
     </select>
 
-<!--    params placehodler  :
-    1. #{} replaced by ?
-    2. ${}  concatenate the string may include the sql injection problem
+    <!--    params placehodler  :
+        1. #{} replaced by ?
+        2. ${}  concatenate the string may include the sql injection problem
 
-    # special character such as <
-    1. Escape characters
-   - <  →  &lt;
-   - >  →  &gt;
-   - &  →  &amp;
-   - "  →  &quot;
-   - '  →  &apos;
-    2. CDATA section
-    ```xml
-        <![CDATA[
-            < <= > >= &
-        ]]>
--->
+        # special character such as <
+        1. Escape characters
+       - <  →  &lt;
+       - >  →  &gt;
+       - &  →  &amp;
+       - "  →  &quot;
+       - '  →  &apos;
+        2. CDATA section
+        ```xml
+            <![CDATA[
+                < <= > >= &
+            ]]>
+    -->
     <select id="selectById" resultMap="brandResMap">
         select * from tb_brand where id = #{id};
     </select>
@@ -74,9 +74,28 @@
         select *
         from tb_brand
         where
-            status = #{status}
+        status = #{status}
         and company_name like #{companyName}
         and brand_name like #{brandName}
+    </select>
+
+    <!-- Dynamic Conditional Query-->
+    <select id="selectByDynamicCondition" resultMap="brandResMap">
+        select *
+        from tb_brand
+        <where>
+            <if test="status != null">
+                status = #{status}
+            </if>
+
+            <if test="companyName != null and companyName !=''">
+                and company_name like #{companyName}
+            </if>
+
+            <if test="brandName != null and brandName !=''">
+                and brand_name like #{brandName}
+            </if>
+        </where>
     </select>
 
 </mapper>
