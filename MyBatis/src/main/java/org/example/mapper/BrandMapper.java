@@ -40,4 +40,6 @@ public interface BrandMapper {
     List<Brand> selectByCondition(Map map);
 
     List<Brand> selectByDynamicCondition(Map map);
+
+    void add(Brand brand);
 }
