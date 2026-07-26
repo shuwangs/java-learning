@@ -42,4 +42,8 @@ public interface BrandMapper {
     List<Brand> selectByDynamicCondition(Map map);
 
     void add(Brand brand);
+
+    int update(Brand brand);
+
+    int updateDynamic(Brand brand);
 }

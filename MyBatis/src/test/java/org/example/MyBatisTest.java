@@ -197,4 +197,98 @@ public class MyBatisTest {
         // 5. release resources
         sqlSession.close();
     }
+
+
+    @Test
+    public void testUpdateDynamic() throws Exception {
+        System.out.println("----------------------");
+        System.out.println("testUpdateDynamic");
+        int status = 1;
+//        String companyName = "lululemon";
+        String brandName = "lululeapple";
+//        String description = "The best sport brand";
+        int ordered = 30;
+        int id = 7;
+
+
+        // contruct the brand obj
+        Brand brand = new Brand();
+        brand.setBrandName(brandName);
+//        brand.setCompanyName(companyName);
+        brand.setStatus(status);
+//        brand.setDescription(description);
+        brand.setOrdered(ordered);
+        brand.setId(id);
+
+
+        // 1. get sqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. get the sqlSession object
+//        SqlSession sqlSession = sqlSessionFactory.openSession();
+//        openSession() default: autoCOmmit to be false; so set it to true cna auto commit
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        // 3. get the Mapper interface proxy object
+
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. excute
+        int count = brandMapper.updateDynamic(brand);
+
+        System.out.println(count);
+        // commit the execution
+        // sqlSession.commit();
+        // 5. release resources
+        sqlSession.close();
+    }
+
+
+    @Test
+    public void testUpdate() throws Exception {
+        System.out.println("----------------------");
+        System.out.println("testUpdate");
+        int status = 1;
+        String companyName = "lululemon";
+        String brandName = "lululemon";
+        String description = "The best sport brand";
+        int ordered = 100;
+        int id = 8;
+
+
+        // contruct the brand obj
+        Brand brand = new Brand();
+        brand.setBrandName(brandName);
+        brand.setCompanyName(companyName);
+        brand.setStatus(status);
+        brand.setDescription(description);
+        brand.setOrdered(ordered);
+        brand.setId(id);
+
+
+        // 1. get sqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. get the sqlSession object
+//        SqlSession sqlSession = sqlSessionFactory.openSession();
+//        openSession() default: autoCOmmit to be false; so set it to true cna auto commit
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        // 3. get the Mapper interface proxy object
+
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. excute
+        int count = brandMapper.update(brand);
+
+        System.out.println(count);
+        // commit the execution
+        // sqlSession.commit();
+        // 5. release resources
+        sqlSession.close();
+    }
 }
