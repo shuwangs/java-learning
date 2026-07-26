@@ -9,4 +9,9 @@ public interface BrandMapper {
      *
      */
     List<Brand> selectAll();
+
+    /**
+     * select by id
+     */
+    Brand selectById(int id);
 }

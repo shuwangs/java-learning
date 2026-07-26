@@ -37,4 +37,28 @@ public class MyBatisTest {
 
 
     }
+
+    public void testSelectById() throws Exception {
+        int id = 1;
+
+        // 1. get sqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream= Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. get the sqlSession object
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 3. get the Mapper interface proxy object
+
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. excute
+
+        Brand brand = brandMapper.selectById(id);
+        System.out.println(brand);
+
+        // 5. release resources
+        sqlSession.close();
+    }
 }

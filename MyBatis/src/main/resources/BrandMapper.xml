@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.mapper.BrandMapper">
+
 <!--    Sql fragment-->
 <!--    <sql id="brand_column">-->
 <!--        id,-->
@@ -45,5 +46,26 @@
 
     <select id="selectAll" resultMap="brandResMap">
         select * from tb_brand;
+    </select>
+
+<!--    params placehodler  :
+    1. #{} replaced by ?
+    2. ${}  concatenate the string may include the sql injection problem
+
+    # special character such as <
+    1. Escape characters
+   - <  →  &lt;
+   - >  →  &gt;
+   - &  →  &amp;
+   - "  →  &quot;
+   - '  →  &apos;
+    2. CDATA section
+    ```xml
+        <![CDATA[
+            < <= > >= &
+        ]]>
+-->
+    <select id="selectById" resultMap="brandResMap">
+        select * from tb_brand where id = #{id};
     </select>
 </mapper>
