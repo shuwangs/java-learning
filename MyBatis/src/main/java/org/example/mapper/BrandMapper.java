@@ -1,5 +1,6 @@
 package org.example.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.example.pojo.Brand;
 
 import java.util.List;
@@ -46,4 +47,10 @@ public interface BrandMapper {
     int update(Brand brand);
 
     int updateDynamic(Brand brand);
+
+    void deleteById(int id);
+
+    void deleteByBatch(@Param("ids") int[] ids);
+
+
 }

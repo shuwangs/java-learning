@@ -291,4 +291,41 @@ public class MyBatisTest {
         // 5. release resources
         sqlSession.close();
     }
+
+    @Test
+    public void testDeleteById() throws Exception {
+        // 1. get sqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+        mapper.deleteById(8);
+
+        sqlSession.commit();
+
+        sqlSession.close();
+    }
+
+    @Test
+    public void testDeleteByBatch() throws Exception {
+        int[] ids = {5, 6, 7};
+        // 1. get sqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+        mapper.deleteByBatch(ids);
+
+        sqlSession.commit();
+
+        sqlSession.close();
+    }
 }

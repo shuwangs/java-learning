@@ -143,9 +143,20 @@
                 status = #{status}
             </if>
         </set>
-  
+
         where id = #{id};
     </update>
 
+    <delete id="deleteById">
+        delete from tb_brand where id = #{id};
+    </delete>
+
+    <delete id="deleteByBatch">
+        delete from tb_brand where id
+        in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>
