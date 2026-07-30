@@ -13,6 +13,8 @@ import java.io.IOException;
  */
 @WebServlet(value = "/demo2", loadOnStartup = 1)
 public class ServletDemo2 implements Servlet {
+    private ServletConfig config;
+
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         /**
@@ -21,6 +23,7 @@ public class ServletDemo2 implements Servlet {
          * 2. times of called: once
 
          */
+        this.config = servletConfig;
         System.out.println("Init...");
     }
 
@@ -52,12 +55,15 @@ public class ServletDemo2 implements Servlet {
 
     @Override
     public String getServletInfo() {
+        /**
+         * usually return null or ""
+         */
         return "";
     }
 
     @Override
     public ServletConfig getServletConfig() {
-        return null;
+        return config;
     }
 
 
