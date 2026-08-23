@@ -18,14 +18,13 @@
     <!--    sping is designed to work for singleton-->
     <!--    表现层对象，services object， data object and tools object are good to use Bean to manage-->
 
-    <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl" scope="singleton"/>
-    <bean id="bookService" name="service service2 bookEbi" class="org.example.service.impl.BookServiceImpl">
-        <!--Configure teh realtion of book Dao with Service   /-->
-        <!--        property, ref means refer to which bean, name refer to a instance-->
-        <property name="bookDao" ref="bookDao"/>
+    <!-- Method 2: Create a bean using a static factory method -->
+    <!-- Equivalent to: OrderDaoFactory.getOrderDao() -->
+    <!--    <bean id="orderDao" class="org.example.factory.OrderDaoFactory" factory-method="getOrderDao"/>-->
 
-    </bean>
-
-    <bean id="orderDao" class="org.example.factory.OrderDaoFactory" factory-method="getOrderDao"/>
-
+    <!--  Method3:  Create a bean using an instance factory method.
+     Spring first creates the factory bean, then calls its factory method
+     to create and manage the target bean -->
+    <bean id="userFactory" class="org.example.factory.UserDaoFactory"/>
+    <bean id="userDao" factory-bean="userFactory" factory-method="getUserDao"/>
 </beans>
