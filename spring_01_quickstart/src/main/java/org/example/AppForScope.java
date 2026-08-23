@@ -12,8 +12,8 @@ public class AppForScope {
         BookDao bookDao1 = (BookDao) ctx.getBean("bookDao");
         BookDao bookDao2 = (BookDao) ctx.getBean("bookDao");
 
-        //Beam default to generate single instances
+        //e
         System.out.println(bookDao1); // org.example.dao.impl.BookDaoImpl@5ef60048
-        System.out.println(bookDao2); // org.example.dao.impl.BookDaoImpl@5ef60048
+        System.out.println(bookDao1); // org.example.dao.impl.BookDaoImpl@5ef60048
     }
 }

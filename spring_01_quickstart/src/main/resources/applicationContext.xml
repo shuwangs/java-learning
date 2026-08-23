@@ -26,4 +26,6 @@
 
     </bean>
 
+    <bean id="orderDao" class="org.example.factory.OrderDaoFactory" factory-method="getOrderDao"/>
+
 </beans>
