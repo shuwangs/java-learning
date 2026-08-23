@@ -25,6 +25,9 @@
     <!--  Method3:  Create a bean using an instance factory method.
      Spring first creates the factory bean, then calls its factory method
      to create and manage the target bean -->
-    <bean id="userFactory" class="org.example.factory.UserDaoFactory"/>
-    <bean id="userDao" factory-bean="userFactory" factory-method="getUserDao"/>
+    <!--    <bean id="userFactory" class="org.example.factory.UserDaoFactory"/>-->
+    <!--    <bean id="userDao" factory-bean="userFactory" factory-method="getUserDao"/>-->
+
+    <!--  Method3:  Create a bean using an instance factory bean method. -->
+    <bean id="userDao" class="org.example.factory.UserDaoFactoryBean"/>
 </beans>
