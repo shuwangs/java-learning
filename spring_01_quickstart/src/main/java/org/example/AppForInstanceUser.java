@@ -9,6 +9,9 @@ public class AppForInstanceUser {
         UserDaoFactory userDaoFactory = new UserDaoFactory();
 
         UserDao userDao = userDaoFactory.getUserDao();
-        userDao.save();
+        UserDao userDao1 = userDaoFactory.getUserDao();
+        //userDao.save();
+        System.out.println(userDao);
+        System.out.println(userDao1);
     }
 }

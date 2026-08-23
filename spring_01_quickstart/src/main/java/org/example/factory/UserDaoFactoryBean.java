@@ -14,4 +14,10 @@ public class UserDaoFactoryBean implements FactoryBean<UserDao> {
     public Class<?> getObjectType() {
         return UserDao.class;
     }
+
+    // Overwrite the method to control the singleton or multiples instances
+    @Override
+    public boolean isSingleton() {
+        return false;
+    }
 }
