@@ -9,12 +9,21 @@
 
     <!--    configure bean-->
     <!--    id is for bean name -->
-    <!--    class menas the type of ben-->
-    <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl"/>
-    <bean id="bookService" class="org.example.service.impl.BookServiceImpl">
+    <!--    class belongs to which class( the type of bean)-->
+    <!--    bean can use alias, the alias can have several and separate by space, comma -->
+    <!-- ref can also refer to both id and name -->
+    <!--    //Beam default to generate single instances -->
+
+    <!--    scope is default to singleton which means only 1 instances, prototype allow several instance-->
+    <!--    sping is designed to work for singleton-->
+    <!--    表现层对象，services object， data object and tools object are good to use Bean to manage-->
+
+    <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl" scope="singleton"/>
+    <bean id="bookService" name="service service2 bookEbi" class="org.example.service.impl.BookServiceImpl">
         <!--Configure teh realtion of book Dao with Service   /-->
-        <!--        property, ref means refer to which bean, , name refer to a instance-->
+        <!--        property, ref means refer to which bean, name refer to a instance-->
         <property name="bookDao" ref="bookDao"/>
+
     </bean>
 
 </beans>
