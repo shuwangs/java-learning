@@ -41,4 +41,11 @@
 
     <!--  Method3:  Create a bean using an instance factory bean method. -->
     <!--    <bean id="userDao" class="org.example.factory.UserDaoFactoryBean"/>-->
+
+    <bean id="bookServiceCons" class="org.example.service.impl.BookServiceImplCons">
+        <!--        name is the param-->
+        <constructor-arg name="bookDao" ref="bookDao"/>
+        <constructor-arg name="userDao" ref="userDao"/>
+
+    </bean>
 </beans>
