@@ -13,4 +13,14 @@ public class BookDaoImpl implements BookDao {
     public void save() {
         System.out.println("bookDao save.... ");
     }
+
+    // bean 初始化对应的操作
+    public void init() {
+        System.out.println("init .... ");
+    }
+
+    // bean 销毁前对应的操作
+    public void destroy() {
+        System.out.println("destroying .... ");
+    }
 }
