@@ -16,10 +16,15 @@
     <!--    <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl" init-method="init" destroy-method="destroy"/>-->
     <bean id="bookService" class="org.example.service.impl.BookServiceImpl">
         <property name="bookDao" ref="bookDao"/>
+        <property name="userDao" ref="userDao"/>
+
     </bean>
     <!--    another way for bean initialization-->
-    <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl"/>
-
+    <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl">
+        <property name="databaseName" value="mysql"/>
+        <property name="connectionNum" value="10"/>
+    </bean>
+    <bean id="userDao" class="org.example.dao.impl.UserDaoImpl"/>
     <!--    scope is default to singleton which means only 1 instances, prototype allow several instance-->
     <!--    sping is designed to work for singleton-->
     <!--    表现层对象，services object， data object and tools object are good to use Bean to manage-->
@@ -35,5 +40,5 @@
     <!--    <bean id="userDao" factory-bean="userFactory" factory-method="getUserDao"/>-->
 
     <!--  Method3:  Create a bean using an instance factory bean method. -->
-    <bean id="userDao" class="org.example.factory.UserDaoFactoryBean"/>
+    <!--    <bean id="userDao" class="org.example.factory.UserDaoFactoryBean"/>-->
 </beans>

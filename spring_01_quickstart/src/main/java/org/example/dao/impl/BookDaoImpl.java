@@ -5,13 +5,23 @@ import org.example.dao.BookDao;
 public class BookDaoImpl implements BookDao {
     // Beans can get both private and public constructor without params;
     // If no constructor is explicitly declared, Java provides a default no-argument constructor.
+    private int connectionNum;
+    private String databaseName;
+
+    public void setConnectionNum(int connectionNum) {
+        this.connectionNum = connectionNum;
+    }
+
+    public void setDatabaseName(String databaseName) {
+        this.databaseName = databaseName;
+    }
 
     private BookDaoImpl() {
         System.out.println("Book dao constructor is running");
     }
 
     public void save() {
-        System.out.println("bookDao save.... ");
+        System.out.println("bookDao save.... " + databaseName + ", " + connectionNum);
     }
 
     // bean 初始化对应的操作
