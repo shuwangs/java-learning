@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl">
+        <property name="array">
+            <array>
+                <value>100</value>
+                <value>100</value>
+                <value>200</value>
+            </array>
+        </property>
+
+        <property name="list">
+            <list>
+                <value>I'm</value>
+                <value>a</value>
+                <value>cat</value>
+            </list>
+        </property>
+
+        <property name="set">
+            <set>
+                <value>I'm</value>
+                <value>a</value>
+                <value>cat</value>
+                <value>cat</value>
+            </set>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="species" value="cat"/>
+                <entry key="breed" value="Ragdoll"/>
+                <entry key="name" value="Bobo"/>
+                <entry key="age" value="6"/>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="Mom">Shu</prop>
+                <prop key="City">Austin</prop>
+                <prop key="State">Texas</prop>
+
+            </props>
+        </property>
+    </bean>
+</beans>
