@@ -8,6 +8,6 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
 ">
-    <!--Use context to add propteries-->
-<bean id="bookDao" class="org.example.dao.impl.BookDaoImpl"/>
+<!--    <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl"/>-->
+    <context:component-scan base-package="org.example" />
 </beans>
