@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.example.dao.AccountDao;
 import org.example.domain.Account;
-import org.springframework.core.io.Resource;
 
 import java.io.InputStream;
 
@@ -14,17 +13,19 @@ import java.io.InputStream;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class App {
     public static void main(String[] args) throws Exception {
+        //Get connecton
         // create SqlSessionBFactoryBuilder obj
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
 
-        InputStream inputStream = Resources.getResourceAsStream("SqlMapConfig.xml");
+        InputStream inputStream = Resources.getResourceAsStream("SqlMapConfig.xml.bak");
 
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(inputStream);
 
+        // Get the sql Session
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
+        // Exectue sql session obj, and get user;
         AccountDao accountDao = sqlSession.getMapper(AccountDao.class);
-
 
         Account ac = accountDao.findById(1);
 

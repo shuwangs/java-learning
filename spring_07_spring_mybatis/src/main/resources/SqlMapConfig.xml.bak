@@ -27,6 +27,7 @@
         </environment>
     </environments>
     <mappers>
+<!--        init the mapper.-->
         <package name="org.example.dao"></package>
     </mappers>
 
