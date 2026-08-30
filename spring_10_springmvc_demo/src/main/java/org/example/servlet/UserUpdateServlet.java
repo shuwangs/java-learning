@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/user/update")
+//@WebServlet("/user/update")
 public class UserUpdateServlet extends HttpServlet{
         protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
             // get request
